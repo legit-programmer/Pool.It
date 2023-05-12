@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Product from "./components/Product";
+import Cart from "./components/Cart";
 
 const products = [
   {
@@ -32,24 +33,29 @@ const products = [
 
 function App() {
   const [count, setCount] = useState(0);
+  const [search, setSearch] = useState("");
 
   return (
     <>
       <div className="container">
-        <Navbar />
+        <Navbar setSearch={setSearch} count={count} />
         <div className="row">
-          {products.map((product) => (
-            <div className="col">
-              <Product
-                name={product.title}
-                price={product.price}
-                imgUrl={product.img}
-                count={count}
-                setCount={setCount}
-              ></Product>
-            </div>
-          ))}
+          {products.map(
+            (product) =>
+              product.title.toLowerCase().includes(search.toLowerCase()) && (
+                <div key={product.img} className="col">
+                  <Product
+                    name={product.title}
+                    price={product.price}
+                    imgUrl={product.img}
+                    count={count}
+                    setCount={setCount}
+                  ></Product>
+                </div>
+              )
+          )}
         </div>
+        {/* <Cart/> */}
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Dispatch } from "react";
 import { SetStateAction } from "react";
 
@@ -25,8 +25,8 @@ const Product = ({ name, price, imgUrl, setCount, count}: props) => {
         console.log(count);
         return <>
         <p className="card-text">Qty:-{pCount}</p>
-        <button className="btn btn-dark m-2" onClick={()=>{setPcount(pCount-1); setCount(count-1)}}>-</button>
-        <button className="btn btn-dark" onClick={()=>{setPcount(pCount+1); setCount(count+1)}}>+</button>
+        <button className="btn btn-outline-dark m-2" onClick={()=>{setPcount(pCount-1); setCount(count-1)}}>-</button>
+        <button className="btn btn-outline-dark" onClick={()=>{setPcount(pCount+1); setCount(count+1)}}>+</button>
         
         </>
     }
