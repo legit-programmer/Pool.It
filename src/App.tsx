@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Product from "./components/Product";
-import Cart from "./components/Cart";
 
 const products = [
   {
