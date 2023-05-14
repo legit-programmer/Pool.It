@@ -4,7 +4,7 @@
 
 # Pool.It
 
-An online store which can be used to list or purchase custom products, all the users pool together to showcase their product at one site. No registration, No Credentials required to list your own product, just grab the link to share it with others.
+An online store which can be used to list or purchase custom products, all the users dive in together to showcase and pool their product at one site. No registration, No Credentials required to list your own product, just grab the link to share it with others.
 
 
 ## Features
