@@ -35,7 +35,7 @@ const Product = ({
     };
 
     const handlePcount = () => {
-        console.log(count);
+        // console.log(count);
         return (
             <>
                 <p className="card-text">Qty:-{pCount}</p>

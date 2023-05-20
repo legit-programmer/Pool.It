@@ -4,7 +4,7 @@ import { Dispatch } from "react";
 import { SetStateAction } from "react";
 
 interface props {
-    products: Array<object>;
+    products: { name: string, price: string, img_url: string, pid: string}[];
     search: string;
     cartItems: Array<string>;
     setCartItems: React.Dispatch<React.SetStateAction<Array<string>>>;
