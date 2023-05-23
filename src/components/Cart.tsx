@@ -1,6 +1,5 @@
 import React from "react";
-import { Dispatch } from "react";
-import { SetStateAction } from "react";
+
 import { Link } from "react-router-dom";
 
 interface props {
@@ -9,7 +8,7 @@ interface props {
     products: { name: string; price: string; img_url: string; pid: string }[];
     count: number;
     setCount: React.Dispatch<React.SetStateAction<number>>;
-    setProdDetails:Dispatch<SetStateAction<{ name: string; price: string; img_url: string; pid: string; }>>;
+    // setProdDetails:Dispatch<SetStateAction<{ name: string; price: string; img_url: string; pid: string; }>>;
 }
 
 const Cart = ({
@@ -18,7 +17,6 @@ const Cart = ({
     products,
     count,
     setCount,
-    setProdDetails
 }: props) => {
     const check = (id: string) => {
         let count = 0;
@@ -45,9 +43,12 @@ const Cart = ({
                     {products.map(
                         (product) =>
                             cartItems.includes(product.pid) && (
-                                <li className="list-group-item d-flex items-center" key={product.pid}>
-                                    {product.name}
-                                    <div className="d-flex items-center justify-center absolute left-[75%]">
+                                <li
+                                    className="list-group-item d-flex items-center"
+                                    key={product.pid}
+                                >
+                                    {product.name + ", $" + product.price}
+                                    <div className="d-flex items-center justify-center absolute left-[80%]">
                                         <button
                                             onClick={() => {
                                                 let tempCart = cartItems;
@@ -78,12 +79,29 @@ const Cart = ({
                                         >
                                             +
                                         </button>
-                                        <button
-                                            onClick={() => setProdDetails({ name: product.name, price: product.price, img_url: product.img_url, pid: product.pid })}
-                                            className="btn btn-primary mx-3"
+
+                                        <Link
+                                            className="no-underline text-white mx-3"
+                                            to={"/product/" + product.pid}
                                         >
-                                            <Link className="no-underline text-white" to={'/page'}>Go to page</Link>
-                                        </button>
+                                            <button className="btn btn-primary">
+                                                
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke-width="1.5"
+                                                    stroke="currentColor"
+                                                    className="w-6 h-6"
+                                                >
+                                                    <path
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </Link>
                                     </div>
                                 </li>
                             )

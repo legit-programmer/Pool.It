@@ -40,7 +40,7 @@ const Product = ({
             <>
                 <p className="card-text">Qty:-{pCount}</p>
                 <button
-                    className="btn btn-outline-dark m-2"
+                    className="btn btn-outline-danger m-2"
                     onClick={() => {
                         setPcount(pCount - 1);
                         setCount(count - 1);
@@ -52,7 +52,7 @@ const Product = ({
                     -
                 </button>
                 <button
-                    className="btn btn-outline-dark"
+                    className="btn btn-outline-success"
                     onClick={() => {
                         setPcount(pCount + 1);
                         setCount(count + 1);
@@ -72,9 +72,12 @@ const Product = ({
             <img src={imgUrl} className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
-                <p className="card-text">Price:-{price}</p>
+                <p className="card-text">{"$" + price}</p>
                 {pCount === 0 ? (
-                    <button className="btn btn-dark" onClick={handleCLick}>
+                    <button
+                        className="btn btn-outline-dark"
+                        onClick={handleCLick}
+                    >
                         Add to Cart
                     </button>
                 ) : (

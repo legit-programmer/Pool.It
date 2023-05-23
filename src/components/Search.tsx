@@ -1,26 +1,40 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface props {
-    
-    setSearch:  React.Dispatch<React.SetStateAction<string>>;
+    setSearch: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Search = ({setSearch}:props) => {
-
-    
-    
-  return (
-    <div className="d-flex absolute left-[38%] w-[25%] top-[25%]">
-      <input
-        className="form-control me-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-        onChange={(e)=>setSearch(e.target.value)}
-      />
-      
-    </div>
-  );
+const Search = ({ setSearch }: props) => {
+    return (
+        <div className="d-flex absolute left-[38%] w-[25%] top-[25%]">
+            <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search from pool"
+                aria-label="Search"
+                onChange={(e) => {
+                    setSearch(e.target.value);
+                }}
+            />
+            <Link to="/pool">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                    />
+                </svg>
+            </Link>
+        </div>
+    );
 };
 
 export default Search;

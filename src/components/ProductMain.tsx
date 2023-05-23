@@ -28,7 +28,7 @@ const ProductMain = ({
                     product.name
                         .toLowerCase()
                         .includes(search.toLowerCase()) && (
-                        <div key={product.img_url} className="col">
+                        <div key={product.pid} className="col">
                             <Product
                                 pid={product.pid}
                                 cartItems={cartItems}

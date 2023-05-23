@@ -28,16 +28,16 @@ function App() {
     const [count, setCount] = useState(0);
     const [search, setSearch] = useState("");
     const [products, setProducts] = useState([
-        { name: "", price: "", img_url: "", pid: "" },
+        { name: "", price: "", img_url: "", pid: "", desc:"", admin:"", mail:"" },
     ]);
 
     const [cartItems, setCartItems] = useState(Array<string>);
-    const [prodDetails, setProdDetails] = useState({
-        name: "",
-        price: "",
-        img_url: "",
-        pid: "",
-    });
+    // const [prodDetails, setProdDetails] = useState({
+    //     name: "",
+    //     price: "",
+    //     img_url: "",
+    //     pid: "",
+    // });
 
     // console.log(products);
 
@@ -70,13 +70,12 @@ function App() {
                                     products={products}
                                     count={count}
                                     setCount={setCount}
-                                    setProdDetails={setProdDetails}
-                                />
+                                                                   />
                             }
                         />
                         <Route
-                            path={"/" + prodDetails.pid} //// do this!!!
-                            element={<EndPage product={prodDetails} />}
+                            path={"/product/:id"} //// do this!!!
+                            element={<EndPage products={products}/>}
                         />
                     </Routes>
                 </Router>
