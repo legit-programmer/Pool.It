@@ -16,7 +16,7 @@ interface props {
 }
 const EndPage = ({ products }: props) => {
     const id = useParams()["id"];
-    const [qty, setQty] = useState(0);
+    const [qty, setQty] = useState(1);
 
     return (
         <div className="container font-modern font-extralight">
@@ -39,7 +39,7 @@ const EndPage = ({ products }: props) => {
                                     <p className=" my-5 text-2xl">
                                         {product.desc}
                                     </p>
-                                    <div className="but">
+                                    <div className="but d-flex">
                                         <div
                                             className="btn-group"
                                             role="group"
@@ -49,7 +49,7 @@ const EndPage = ({ products }: props) => {
                                                 type="button"
                                                 className="btn btn-outline-danger"
                                                 onClick={() =>
-                                                    qty > 0 && setQty(qty - 1)
+                                                    qty > 1 && setQty(qty - 1)
                                                 }
                                             >
                                                 -
@@ -65,6 +65,8 @@ const EndPage = ({ products }: props) => {
                                                 +
                                             </button>
                                         </div>
+
+                                        <h4 className="mx-4 text-4xl font-semibold">${qty===0?product.price:(qty*Number(product.price))}</h4>
                                     </div>
 
                                     <div className=" d-flex admin  border-solid border-2 border- rounded-md justify-center my-5">

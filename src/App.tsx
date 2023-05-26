@@ -4,12 +4,9 @@ import axios from "axios";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
 import EndPage from "./components/EndPage";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductMain from "./components/ProductMain";
+import AddProduct from "./components/AddProduct";
 
 function App() {
     useEffect(() => {
@@ -28,7 +25,15 @@ function App() {
     const [count, setCount] = useState(0);
     const [search, setSearch] = useState("");
     const [products, setProducts] = useState([
-        { name: "", price: "", img_url: "", pid: "", desc:"", admin:"", mail:"" },
+        {
+            name: "",
+            price: "",
+            img_url: "",
+            pid: "",
+            desc: "",
+            admin: "",
+            mail: "",
+        },
     ]);
 
     const [cartItems, setCartItems] = useState(Array<string>);
@@ -70,13 +75,14 @@ function App() {
                                     products={products}
                                     count={count}
                                     setCount={setCount}
-                                                                   />
+                                />
                             }
                         />
                         <Route
                             path={"/product/:id"} //// do this!!!
-                            element={<EndPage products={products}/>}
+                            element={<EndPage products={products} />}
                         />
+                        <Route path={"/add"} element={<AddProduct />} />
                     </Routes>
                 </Router>
 
