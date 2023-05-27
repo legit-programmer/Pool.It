@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import AddComponent from "./AddComponent";
 
 const AddProduct = () => {
     const [newProd, setNewProd] = useState(Object);
@@ -19,112 +19,103 @@ const AddProduct = () => {
     //         admin: "",
     //         mail: "",
 
-    const NameElement = () => {
-        console.log("ures");
-        return (
-            <div className="container ">
-                <div className="data my-16 bg-slate-400 d-flex rounded-md w-[100%] h-[100%] ">
-                    <div className="font-modern">
-                        <h1 className="text-6xl font-semibold w-[75%]">
-                            Enter product's name
-                        </h1>
-                        <p className="text-3xl">
-                            name should be a bit descriptive.
-                        </p>
-                        <input
-                            className=" my-24 w-[75%] text-4xl rounded-sm ring-2 ring-[#39D0BB]"
-                            type="text"
-                            name="name"
-                            onChange={(e) => {
-                                setupVal(e, "name");
-                            }}
-                        />
-                        <div className="but flex justify-end w-[75%]">
-                            <button
-                                onClick={() => setCurrent(1)}
-                                className="btn btn-primary w-[25%]"
-                            >
-                                Next
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    };
+  
     // React.ChangeEvent<HTMLInputElement>
-    const imageElement = () => {
-        return (
-            <>
-                <p>enter image url</p>
-                <input onChange={(e)=>setupVal(e, "img_url")} type="text" className="imgurl" />
-                <button onClick={() => setCurrent(2)}>next</button>
-            </>
-        );
-    };
-
-    const priceElement = () => {
-        return (
-            <>
-                <p>enter price</p>
-                <input onChange={(e)=>setupVal(e, "price")} type="text" className="imgurl" />
-                <button onClick={() => setCurrent(3)}>next</button>
-            </>
-        );
-    };
-    const descElement = () => {
-        return (
-            <>
-                <p>enter desc</p>
-                <input type="text" onChange={(e)=>setupVal(e, "desc")} className="imgurl" />
-                <button onClick={() => setCurrent(4)}>next</button>
-            </>
-        );
-    };
-
-    const adminElement = () => {
-        return (
-            <>
-                <p>enter admin</p>
-                <input type="text" className="imgurl" onChange={(e)=>setupVal(e, "admin")}/>
-                <button onClick={() => setCurrent(5)}>next</button>
-            </>
-        );
-    };
-
-    const mailElement = () => {
-        return (
-            <>
-                <p>enter maill</p>
-                <input type="text" className="imgurl" onChange={(e)=>setupVal(e, "mail")}/>
-                <button onClick={() => console.log(newProd)}>
-                    Publish to pool
-                </button>
-            </>
-        );
-    };
+    
 
     const [current, setCurrent] = useState(0);
 
     switch (current) {
         case 0:
-            return NameElement();
+            return (
+                <AddComponent
+                    current={current}
+                    setupVal={setupVal}
+                    setCurrent={setCurrent}
+                    hero="Enter your product's name"
+                    sub="name should be a bit descriptive."
+                    type="name"
+                    but="Next"
+                    img="https://static.vecteezy.com/system/resources/previews/001/222/484/non_2x/e-commerce-online-shopping-concept-vector.jpg"
+                    newProd={newProd}
+                />
+            );
             break;
         case 1:
-            return imageElement();
+            return (
+                <AddComponent
+                    current={current}
+                    setupVal={setupVal}
+                    setCurrent={setCurrent}
+                    hero="Add product's image URL"
+                    sub="we currently dont support file uploads, you can host yout image for free ong imagur."
+                    type="img_url"
+                    but="Next"
+                    img="https://th.bing.com/th/id/R.53805e41b5d80114dbb66ca20b348806?rik=79P8ZhWrl%2fts9A&pid=ImgRaw&r=0"
+                    newProd={newProd}
+                />
+            );
             break;
         case 2:
-            return priceElement();
+            return (
+                <AddComponent
+                    current={current}
+                    setupVal={setupVal}
+                    setCurrent={setCurrent}
+                    hero="Add price"
+                    sub="eg: 50, 14 not $15 or $15.32"
+                    type="price"
+                    but="Next"
+                    img="https://static.vecteezy.com/system/resources/previews/001/829/844/non_2x/saving-into-a-piggy-bank-depicts-people-putting-money-into-banking-to-copy-save-and-bank-interest-for-return-on-investment-roi-character-concept-illustration-for-web-landing-page-mobile-apps-free-vector.jpg"
+                    newProd={newProd}
+                />
+            );
             break;
         case 3:
-            return descElement();
+            return (
+                <AddComponent
+                    current={current}
+                    setupVal={setupVal}
+                    setCurrent={setCurrent}
+                    hero="Won't you describe your product?"
+                    sub="breif description around 50 to 100 words."
+                    type="desc"
+                    but="Next"
+                    img="https://static.vecteezy.com/system/resources/previews/001/829/844/non_2x/saving-into-a-piggy-bank-depicts-people-putting-money-into-banking-to-copy-save-and-bank-interest-for-return-on-investment-roi-character-concept-illustration-for-web-landing-page-mobile-apps-free-vector.jpg"
+                    newProd={newProd}
+                />
+            );
             break;
         case 4:
-            return adminElement();
+            return (
+                <AddComponent
+                    current={current}
+                    setupVal={setupVal}
+                    setCurrent={setCurrent}
+                    hero="Time for your details"
+                    sub="enter your full name."
+                    type="admin"
+                    but="Next"
+                    img="https://static.vecteezy.com/system/resources/previews/022/076/802/non_2x/smiling-woman-send-messages-online-on-cellphone-happy-female-user-chat-on-internet-on-smartphone-virtual-communication-on-gadget-illustration-vector.jpg"
+                    newProd={newProd}
+                />
+            );
             break;
 
         case 5:
-            return mailElement();
+            return (
+                <AddComponent
+                    current={current}
+                    setupVal={setupVal}
+                    setCurrent={setCurrent}
+                    hero="Time for your details"
+                    sub="your payment email."
+                    type="mail"
+                    but="Publish Pool"
+                    img="https://static.vecteezy.com/system/resources/previews/022/076/802/non_2x/smiling-woman-send-messages-online-on-cellphone-happy-female-user-chat-on-internet-on-smartphone-virtual-communication-on-gadget-illustration-vector.jpg"
+                    newProd={newProd}
+                />
+            );
             break;
         default:
             break;
