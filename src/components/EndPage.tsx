@@ -66,15 +66,24 @@ const EndPage = ({ products }: props) => {
                                             </button>
                                         </div>
 
-                                        <h4 className="mx-4 text-4xl font-semibold">${qty===0?product.price:(qty*Number(product.price))}</h4>
+                                        <h4 className="mx-4 text-4xl font-semibold">
+                                            $
+                                            {qty === 0
+                                                ? product.price
+                                                : qty * Number(product.price)}
+                                        </h4>
                                     </div>
 
                                     <div className=" d-flex admin  border-solid border-2 border- rounded-md justify-center my-5">
                                         <div>
-                                            <h2 className=" text-4xl">Listed By</h2>
+                                            <h2 className=" text-4xl">
+                                                Listed By
+                                            </h2>
                                             <div className="d-flex details">
                                                 <h3>{product.admin}</h3>
-                                                <h3 className="mx-3">{product.mail}</h3>
+                                                <h3 className="mx-3">
+                                                    {product.mail}
+                                                </h3>
                                             </div>
                                         </div>
                                     </div>

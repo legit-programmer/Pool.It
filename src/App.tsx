@@ -7,22 +7,29 @@ import EndPage from "./components/EndPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductMain from "./components/ProductMain";
 import AddProduct from "./components/AddProduct";
+import Loading from "./components/Loading";
 
 function App() {
     useEffect(() => {
+        
+        products[0]['name']===''?setLoading(true):setLoading(false);
         axios
             .get("http://127.0.0.1:8000/get/") // FIX THIS REQUEST THING!!!!!!
             .then((res) => {
+                console.log(products);
                 setProducts(res.data);
+                
             })
             .catch((err) => {
                 console.log(err);
+                
             });
     });
 
     // console.log(products);
 
     const [count, setCount] = useState(0);
+    const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState("");
     const [products, setProducts] = useState([
         {
@@ -56,14 +63,18 @@ function App() {
                         <Route
                             path="/pool"
                             element={
-                                <ProductMain
-                                    products={products}
-                                    setCartItems={setCartItems}
-                                    search={search}
-                                    cartItems={cartItems}
-                                    count={count}
-                                    setCount={setCount}
-                                />
+                                loading ? (
+                                    <Loading />
+                                ) : (
+                                    <ProductMain
+                                        products={products}
+                                        setCartItems={setCartItems}
+                                        search={search}
+                                        cartItems={cartItems}
+                                        count={count}
+                                        setCount={setCount}
+                                    />
+                                )
                             }
                         />
                         <Route
@@ -83,6 +94,7 @@ function App() {
                             element={<EndPage products={products} />}
                         />
                         <Route path={"/add"} element={<AddProduct />} />
+                        <Route path={"/load"} Component={Loading} />
                     </Routes>
                 </Router>
 

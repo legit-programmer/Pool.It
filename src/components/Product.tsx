@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Dispatch } from "react";
 import { SetStateAction } from "react";
+import { Link } from "react-router-dom";
 
 interface props {
     name: string;
@@ -69,7 +70,13 @@ const Product = ({
 
     return (
         <div className="card" style={{ width: "18rem" }}>
-            <img src={imgUrl} className="card-img-top" alt="..." />
+            <Link
+                to={`/product/${pid}`}
+                style={{ textDecoration: "none", color: "black" }}
+                className="link"
+            >
+                <img src={imgUrl} className="card-img-top" alt="..." />
+            </Link>
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{"$" + price}</p>
