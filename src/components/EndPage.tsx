@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { useParams } from "react-router-dom";
 import Prompt from "./Prompt";
+import CheckoutForm from "./CheckoutForm";
 
 interface props {
     //    product:{name:string, price:string, img_url:string, pid:string};
@@ -39,10 +40,13 @@ const EndPage = ({ products }: props) => {
                             <h3 className="mx-3">{product.mail}</h3>
                         </div>
                     </div>
-                    <Prompt text="Important Note! Make sure you trust the person who have listed the product or shared you the link. As there is no 
-                    registrations this may lead to various scam!"/>
-                   
+                    <Prompt
+                        text="Important Note! Make sure you trust the person who have listed the product or shared you the link. As there is no 
+                    registrations this may lead to various scam!"
+                    />
+                    
                 </div>
+                <CheckoutForm mail={product.mail} pid={product.pid} />
             </>
         );
     };

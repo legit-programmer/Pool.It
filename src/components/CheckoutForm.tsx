@@ -1,12 +1,30 @@
 import { useState } from "react";
+import axios from "axios";
 
-const CheckoutForm = () => {
+interface props {
+    pid: string;
+    mail: string;
+}
+
+const CheckoutForm = ({ pid, mail }: props) => {
     const [checkoutDetails, setCheckoutDetails] = useState(Object);
 
     const setupVal = (type: string, e: React.ChangeEvent<HTMLInputElement>) => {
         let temp = checkoutDetails;
         temp[type] = e.target.value;
         setCheckoutDetails(temp);
+    };
+
+    const checkoutMain = () => {
+        let temp = checkoutDetails;
+        temp["adminMail"] = mail;
+        temp["pid"] = pid;
+        setCheckoutDetails(temp);
+
+        axios
+            .post("127.0.0.1:8000/postMail", checkoutDetails)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
     };
 
     return (
@@ -62,7 +80,10 @@ const CheckoutForm = () => {
                     className="form-control"
                     placeholder="3246421384"
                 />
-                <button className="btn btn-outline-success float-right my-3" onClick={()=>console.log(checkoutDetails)}>
+                <button
+                    className="btn btn-outline-success float-right my-3"
+                    onClick={checkoutMain}
+                >
                     Place the order
                 </button>
             </div>
