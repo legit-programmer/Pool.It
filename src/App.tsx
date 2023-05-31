@@ -9,6 +9,7 @@ import ProductMain from "./components/ProductMain";
 import AddProduct from "./components/AddProduct";
 import Loading from "./components/Loading";
 import Prompt from "./components/Prompt";
+import CheckoutForm from "./components/CheckoutForm";
 
 function App() {
     useEffect(() => {
@@ -102,6 +103,7 @@ function App() {
                                 />
                             }
                         />
+                        <Route path={"/form"} Component={CheckoutForm} />
                     </Routes>
                 </Router>
 
