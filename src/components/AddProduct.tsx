@@ -110,7 +110,7 @@ const AddProduct = () => {
                     setCurrent={setCurrent}
                     hero="Time for your details"
                     sub="your payment email."
-                    type="mail"
+                    type="adminMail"
                     but="Publish Pool"
                     img="https://static.vecteezy.com/system/resources/previews/022/076/802/non_2x/smiling-woman-send-messages-online-on-cellphone-happy-female-user-chat-on-internet-on-smartphone-virtual-communication-on-gadget-illustration-vector.jpg"
                     newProd={newProd}

@@ -22,7 +22,7 @@ const CheckoutForm = ({ pid, mail }: props) => {
         setCheckoutDetails(temp);
 
         axios
-            .post("127.0.0.1:8000/postMail", checkoutDetails)
+            .post("http://127.0.0.1:8000/postMail/", checkoutDetails)
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
     };
@@ -61,7 +61,7 @@ const CheckoutForm = ({ pid, mail }: props) => {
                 <textarea
                     onChange={(e) => {
                         let temp = checkoutDetails;
-                        temp["adddress"] = e.target.value;
+                        temp["address"] = e.target.value;
                         setCheckoutDetails(checkoutDetails);
                     }}
                     className="form-control"
