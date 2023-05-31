@@ -20,6 +20,7 @@ const EndPage = ({ products }: props) => {
     const id = useParams()["id"];
     const [qty, setQty] = useState(1);
     const [payClicked, setPayClicked] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     const payDetails = (product: {
         name: string;
@@ -32,21 +33,41 @@ const EndPage = ({ products }: props) => {
     }) => {
         return (
             <>
-                <div className=" d-flex admin  border-solid border-2 border- rounded-md justify-center my-5">
+                <div className=" d-flex admin  border-solid justify-left my-5">
                     <div>
                         <h2 className=" text-4xl">Listed By</h2>
                         <div className="d-flex details">
-                            <h3>{product.admin}</h3>
-                            <h3 className="mx-3">{product.mail}</h3>
+                            <h5>{product.admin}</h5>
+                            <h5 className="mx-3">{product.mail}</h5>
                         </div>
                     </div>
                     <Prompt
                         text="Important Note! Make sure you trust the person who have listed the product or shared you the link. As there is no 
                     registrations this may lead to various scam!"
                     />
-                    
                 </div>
-                <CheckoutForm mail={product.mail} pid={product.pid} />
+                {success && (
+                    <div
+                        className="alert alert-success alert-dismissible fade show"
+                        role="alert"
+                    >
+                        <strong>Order Success!</strong> Your details have been
+                        sent to the product holder he will be in touch with you
+                        soon.
+                        <button
+                            onClick={() => setSuccess(false)}
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                )}
+                <CheckoutForm
+                    mail={product.mail}
+                    pid={product.pid}
+                    setSuccess={setSuccess}
+                />
             </>
         );
     };
