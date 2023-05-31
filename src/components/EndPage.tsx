@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { useParams } from "react-router-dom";
+import Prompt from "./Prompt";
 
 interface props {
     //    product:{name:string, price:string, img_url:string, pid:string};
@@ -17,6 +18,47 @@ interface props {
 const EndPage = ({ products }: props) => {
     const id = useParams()["id"];
     const [qty, setQty] = useState(1);
+    const [payClicked, setPayClicked] = useState(false);
+
+    const payDetails = (product: {
+        name: string;
+        price: string;
+        img_url: string;
+        pid: string;
+        desc: string;
+        admin: string;
+        mail: string;
+    }) => {
+        return (
+            <>
+                <div className=" d-flex admin  border-solid border-2 border- rounded-md justify-center my-5">
+                    <div>
+                        <h2 className=" text-4xl">Listed By</h2>
+                        <div className="d-flex details">
+                            <h3>{product.admin}</h3>
+                            <h3 className="mx-3">{product.mail}</h3>
+                        </div>
+                    </div>
+                    <Prompt text="Important Note! Make sure you trust the person who have listed the product or shared you the link. As there is no 
+                    registrations this may lead to various scam!"/>
+                   
+                </div>
+            </>
+        );
+    };
+
+    const payButton = () => {
+        return (
+            <div className="pay-button">
+                <button
+                    className="btn btn-primary"
+                    onClick={() => setPayClicked(true)}
+                >
+                    Ready to checkout
+                </button>
+            </div>
+        );
+    };
 
     return (
         <div className="container font-modern font-extralight">
@@ -73,19 +115,10 @@ const EndPage = ({ products }: props) => {
                                                 : qty * Number(product.price)}
                                         </h4>
                                     </div>
-
-                                    <div className=" d-flex admin  border-solid border-2 border- rounded-md justify-center my-5">
-                                        <div>
-                                            <h2 className=" text-4xl">
-                                                Listed By
-                                            </h2>
-                                            <div className="d-flex details">
-                                                <h3>{product.admin}</h3>
-                                                <h3 className="mx-3">
-                                                    {product.mail}
-                                                </h3>
-                                            </div>
-                                        </div>
+                                    <div className="paydiv my-[10%]">
+                                        {payClicked
+                                            ? payDetails(product)
+                                            : payButton()}
                                     </div>
                                 </div>
                             </section>

@@ -8,21 +8,19 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductMain from "./components/ProductMain";
 import AddProduct from "./components/AddProduct";
 import Loading from "./components/Loading";
+import Prompt from "./components/Prompt";
 
 function App() {
     useEffect(() => {
-        
-        products[0]['name']===''?setLoading(true):setLoading(false);
+        products[0]["name"] === "" ? setLoading(true) : setLoading(false);
         axios
             .get("http://127.0.0.1:8000/get/") // FIX THIS REQUEST THING!!!!!!
             .then((res) => {
                 console.log(products);
                 setProducts(res.data);
-                
             })
             .catch((err) => {
                 console.log(err);
-                
             });
     });
 
@@ -95,6 +93,15 @@ function App() {
                         />
                         <Route path={"/add"} element={<AddProduct />} />
                         <Route path={"/load"} Component={Loading} />
+                        <Route
+                            path={"/prompt"}
+                            element={
+                                <Prompt
+                                    text="Important Note! Make sure you trust the person who have listed the product or shared you the link. As there is no 
+                    registrations this may lead to various scam!"
+                                />
+                            }
+                        />
                     </Routes>
                 </Router>
 
