@@ -2,7 +2,7 @@ const Home = () => {
     return (
         <>
             <div
-                className="bg m-0 p-0 absolute left-0 h-full w-full"
+                className="bg m-0 p-0 absolute left-0  w-full"
                 style={{
                     backgroundImage:
                         'url("https://i.ibb.co/hYPfQLd/gradient.png")',
@@ -11,11 +11,11 @@ const Home = () => {
                 }}
             >
                 <div className="container">
-                    <div className="main d-flex font-modern justify-center  my-[10%] ">
+                    <div className=" main d-flex font-modern justify-center  my-[10%]">
                         <div className="left w-[50%]">
                             <h1 className=" font-semibold text-white text-8xl drop-shadow-2xl">
                                 List your product with{" "}
-                                <span className="font-bold text-[#204C45]">
+                                <span className="font-bold text-[#204C45] animate-pulse">
                                     {" "}
                                     zero hassle, for free
                                 </span>
