@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface props {
     setupVal: (e: React.ChangeEvent<HTMLInputElement>, type: string) => void;
@@ -23,6 +24,8 @@ const AddComponent = ({
     current,
     newProd
 }: props) => {
+
+    const navigate = useNavigate();
     return (
         <div className="container ">
             <div className="data my-16 d-flex rounded-md w-[100%] h-[100%] d-flex ">
@@ -51,8 +54,10 @@ const AddComponent = ({
                                         )
                                         .then((data) => {
                                             console.log(data);
+                                            navigate(`/product/${data.data.id}`);
                                         })
                                         .catch((err) => console.log(err));
+                                        
                                 }
                                 else{
                                     setCurrent(current + 1);
