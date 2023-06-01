@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 import smtplib
+from email.message import EmailMessage
 
 
 load_dotenv()
@@ -13,7 +14,8 @@ def sendDetails(data):
     s.starttls()
     s.login(os.getenv('EMAIL'), os.getenv('PSK'))
     print(data['address'])
-    message = f"Order for your product \n{url} Name: {data['name']} \nEmail: {data['email']} \nAddress: {data['address']} \nTransactionID: {data['trancsid']}"
+    message = f"Subject: Order for your product \n\nProduct: {url} \nName: {data['name']} \nEmail: {data['email']} \nAddress: {data['address']} \nTransactionID: {data['trancsid']}"
     print(message)
-    s.sendmail(os.getenv('EMAIL'), data['adminMail'], str(message) )
+    s.sendmail(os.getenv('EMAIL'), data['adminMail'], str(message))
+    print('Message sent!')
     s.quit()
