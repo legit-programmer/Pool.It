@@ -19,3 +19,4 @@ def sendDetails(data):
     s.sendmail(os.getenv('EMAIL'), data['adminMail'], str(message))
     print('Message sent!')
     s.quit()
+    
