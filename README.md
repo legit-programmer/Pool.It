@@ -12,7 +12,7 @@ An online store which can be used to list or purchase custom products, all the u
 - No Registration/ Credentials required 
 - Super fast, quick and easy
 - Unique product links
-- Stripe integeration
+- Get notified when your product is ordered
 
 
 ## Authors
