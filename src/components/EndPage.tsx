@@ -67,6 +67,7 @@ const EndPage = ({ products }: props) => {
                     mail={product.mail}
                     pid={product.pid}
                     setSuccess={setSuccess}
+                    qty={qty}
                 />
             </>
         );

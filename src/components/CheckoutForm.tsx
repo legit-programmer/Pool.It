@@ -6,9 +6,10 @@ interface props {
     pid: string;
     mail: string;
     setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+    qty: number;
 }
 
-const CheckoutForm = ({ pid, mail, setSuccess }: props) => {
+const CheckoutForm = ({ pid, mail, setSuccess, qty }: props) => {
     const [checkoutDetails, setCheckoutDetails] = useState(Object);
     const [loading, setLoading] = useState(false);
     const setupVal = (type: string, e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,6 +89,7 @@ const CheckoutForm = ({ pid, mail, setSuccess }: props) => {
         let temp = checkoutDetails;
         temp["adminMail"] = mail;
         temp["pid"] = pid;
+        temp["qty"] = qty
 
         setCheckoutDetails(temp);
 

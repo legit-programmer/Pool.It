@@ -14,7 +14,7 @@ def sendDetails(data):
     s.starttls()
     s.login(os.getenv('EMAIL'), os.getenv('PSK'))
     print(data['address'])
-    message = f"Subject: Order for your product \n\nProduct: {url} \nName: {data['name']} \nEmail: {data['email']} \nAddress: {data['address']} \nTransactionID: {data['trancsid']}"
+    message = f"Subject: Order for your product \n\nProduct: {url} \nName: {data['name']} \nQty: {data['qty']} \nEmail: {data['email']} \nAddress: {data['address']} \nTransactionID: {data['trancsid']}"
     print(message)
     s.sendmail(os.getenv('EMAIL'), data['adminMail'], str(message))
     print('Message sent!')
