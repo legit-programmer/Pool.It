@@ -49,7 +49,7 @@ const AddComponent = ({
                                     console.log(newProd);
                                     axios
                                         .post(
-                                            "http://127.0.0.1:8000/post/",
+                                            "http://notlegit991.pythonanywhere.com/post/",
                                             newProd
                                         )
                                         .then((data) => {
