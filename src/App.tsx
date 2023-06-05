@@ -9,24 +9,27 @@ import ProductMain from "./components/ProductMain";
 import AddProduct from "./components/AddProduct";
 import Loading from "./components/Loading";
 import Prompt from "./components/Prompt";
-
+import { useLocation } from "react-router-dom";
 
 function App() {
     useEffect(() => {
-        products[0]["name"] === "" ? setLoading(true) : setLoading(false);
-        axios
-            .get("https://notlegit991.pythonanywhere.com/get/") // FIX THIS REQUEST THING!!!!!!
-            .then((res) => {
-                console.log(products);
-                setProducts(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        if (location.pathname === "/pool") {
+            console.log(location.pathname);
+            products[0]["name"] === "" ? setLoading(true) : setLoading(false);
+            axios
+                .get("https://notlegit991.pythonanywhere.com/get/") // FIX THIS REQUEST THING!!!!!!
+                .then((res) => {
+                    console.log(products);
+                    setProducts(res.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
     });
 
     // console.log(products);
-
+    const location = useLocation();
     const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState("");
@@ -55,57 +58,56 @@ function App() {
     return (
         <>
             <div className="container">
-                <Router>
-                    <Navbar setSearch={setSearch} count={count} />
-                    <Routes>
-                        <Route path="/" Component={Home} />
-                        <Route
-                            path="/pool"
-                            element={
-                                loading ? (
-                                    <Loading />
-                                ) : (
-                                    <ProductMain
-                                        products={products}
-                                        setCartItems={setCartItems}
-                                        search={search}
-                                        cartItems={cartItems}
-                                        count={count}
-                                        setCount={setCount}
-                                    />
-                                )
-                            }
-                        />
-                        <Route
-                            path="/cart"
-                            element={
-                                <Cart
-                                    cartItems={cartItems}
-                                    setCartItems={setCartItems}
+                {/* <Router> */}
+                <Navbar setSearch={setSearch} count={count} />
+                <Routes>
+                    <Route path="/" Component={Home} />
+                    <Route
+                        path="/pool"
+                        element={
+                            loading ? (
+                                <Loading />
+                            ) : (
+                                <ProductMain
                                     products={products}
+                                    setCartItems={setCartItems}
+                                    search={search}
+                                    cartItems={cartItems}
                                     count={count}
                                     setCount={setCount}
                                 />
-                            }
-                        />
-                        <Route
-                            path={"/product/:id"} //// do this!!!
-                            element={<EndPage products={products} />}
-                        />
-                        <Route path={"/add"} element={<AddProduct />} />
-                        <Route path={"/load"} Component={Loading} />
-                        <Route
-                            path={"/prompt"}
-                            element={
-                                <Prompt
-                                    text="Important Note! Make sure you trust the person who have listed the product or shared you the link. As there is no 
+                            )
+                        }
+                    />
+                    <Route
+                        path="/cart"
+                        element={
+                            <Cart
+                                cartItems={cartItems}
+                                setCartItems={setCartItems}
+                                products={products}
+                                count={count}
+                                setCount={setCount}
+                            />
+                        }
+                    />
+                    <Route
+                        path={"/product/:id"} //// do this!!!
+                        element={<EndPage products={products} />}
+                    />
+                    <Route path={"/add"} element={<AddProduct />} />
+                    <Route path={"/load"} Component={Loading} />
+                    <Route
+                        path={"/prompt"}
+                        element={
+                            <Prompt
+                                text="Important Note! Make sure you trust the person who have listed the product or shared you the link. As there is no 
                     registrations this may lead to various scam!"
-                                />
-                            }
-                        />
-                        
-                    </Routes>
-                </Router>
+                            />
+                        }
+                    />
+                </Routes>
+                {/* </Router> */}
 
                 {/* <Cart
                     cartItems={cartItems}

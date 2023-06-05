@@ -9,7 +9,7 @@ load_dotenv()
 
 def sendDetails(data):
     data = dict(data)
-    url = f'https://notlegit991.pythonanywhere.com/product/{data["pid"]}'
+    url = f'https://poolitt.netlify.app/product/{data["pid"]}'
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
     s.login(os.getenv('EMAIL'), os.getenv('PSK'))
