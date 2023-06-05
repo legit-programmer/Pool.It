@@ -94,7 +94,7 @@ const CheckoutForm = ({ pid, mail, setSuccess, qty }: props) => {
         setCheckoutDetails(temp);
 
         axios
-            .post("http://notlegit991.pyhtonanywhere.com/postMail/", checkoutDetails)
+            .post("https://notlegit991.pyhtonanywhere.com/postMail/", checkoutDetails)
             .then((res) => {
                 console.log(res);
                 setLoading(false);

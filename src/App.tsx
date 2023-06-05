@@ -15,7 +15,7 @@ function App() {
     useEffect(() => {
         products[0]["name"] === "" ? setLoading(true) : setLoading(false);
         axios
-            .get("http://notlegit991.pythonanywhere.com/get/") // FIX THIS REQUEST THING!!!!!!
+            .get("https://notlegit991.pythonanywhere.com/get/") // FIX THIS REQUEST THING!!!!!!
             .then((res) => {
                 console.log(products);
                 setProducts(res.data);
