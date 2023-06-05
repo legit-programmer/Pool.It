@@ -9,7 +9,7 @@ load_dotenv()
 
 def sendDetails(data):
     data = dict(data)
-    url = f'https://127.0.0.1:8000/product/{data["pid"]}'
+    url = f'https://notlegit991.pythonanywhere.com/product/{data["pid"]}'
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
     s.login(os.getenv('EMAIL'), os.getenv('PSK'))
@@ -19,4 +19,3 @@ def sendDetails(data):
     s.sendmail(os.getenv('EMAIL'), data['adminMail'], str(message))
     print('Message sent!')
     s.quit()
-    
