@@ -4,7 +4,7 @@ import axios from "axios";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
 import EndPage from "./components/EndPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import ProductMain from "./components/ProductMain";
 import AddProduct from "./components/AddProduct";
 import Loading from "./components/Loading";
