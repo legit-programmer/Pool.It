@@ -12,26 +12,12 @@ import Prompt from "./components/Prompt";
 import { useLocation } from "react-router-dom";
 
 function App() {
-    useEffect(() => {
-        if (location.pathname === "/pool") {
-            console.log(location.pathname);
-            products[0]["name"] === "" ? setLoading(true) : setLoading(false);
-            axios
-                .get("https://notlegit991.pythonanywhere.com/get/") // FIX THIS REQUEST THING!!!!!!
-                .then((res) => {
-                    console.log(products);
-                    setProducts(res.data);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }
-    });
+    
 
     // console.log(products);
     const location = useLocation();
     const [count, setCount] = useState(0);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
     const [products, setProducts] = useState([
         {
@@ -46,14 +32,25 @@ function App() {
     ]);
 
     const [cartItems, setCartItems] = useState(Array<string>);
-    // const [prodDetails, setProdDetails] = useState({
-    //     name: "",
-    //     price: "",
-    //     img_url: "",
-    //     pid: "",
-    // });
+    useEffect(() => {
+        
+        if (location.pathname === "/pool") {
+            console.log(location.pathname);
+            
+            console.log('set the loading false');
+            axios
+                .get("https://notlegit991.pythonanywhere.com/get/") // FIX THIS REQUEST THING!!!!!!
+                .then((res) => {
+                    console.log(products);
+                    setProducts(res.data);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+    },[count]);
 
-    // console.log(products);
 
     return (
         <>
