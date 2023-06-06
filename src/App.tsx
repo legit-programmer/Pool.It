@@ -49,7 +49,7 @@ function App() {
                     console.log(err);
                 });
         }
-    },[count]);
+    },[location.pathname]);
 
 
     return (
