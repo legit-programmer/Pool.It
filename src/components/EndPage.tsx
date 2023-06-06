@@ -1,8 +1,11 @@
 import { useState } from "react";
-
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Prompt from "./Prompt";
 import CheckoutForm from "./CheckoutForm";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import Loading from "./Loading";
 
 interface props {
     //    product:{name:string, price:string, img_url:string, pid:string};
@@ -15,13 +18,45 @@ interface props {
         admin: string;
         mail: string;
     }[];
+    setProducts: React.Dispatch<
+        React.SetStateAction<
+            {
+                name: string;
+                price: string;
+                img_url: string;
+                pid: string;
+                desc: string;
+                admin: string;
+                mail: string;
+            }[]
+        >
+    >;
 }
-const EndPage = ({ products }: props) => {
+const EndPage = ({ products, setProducts }: props) => {
     const id = useParams()["id"];
     const [qty, setQty] = useState(1);
     const [payClicked, setPayClicked] = useState(false);
     const [success, setSuccess] = useState(false);
+    const location = useLocation();
+    const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        if (products[0]["name"] === "") {
+            setLoading(true);
+            axios
+                .get("https://notlegit991.pythonanywhere.com/get/") // FIX THIS REQUEST THING!!!!!!
+                .then((res) => {
+                    console.log(res);
+                    setProducts(res.data);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+
+        
+    }, [location.pathname]);
     const payDetails = (product: {
         name: string;
         price: string;
@@ -86,7 +121,8 @@ const EndPage = ({ products }: props) => {
         );
     };
 
-    return (
+    const mainRender = ()=>{
+        return (
         <div className="container font-modern font-extralight">
             {products.map(
                 (product) =>
@@ -152,7 +188,11 @@ const EndPage = ({ products }: props) => {
                     )
             )}
         </div>
-    );
+    );}
+    
+    //ROOT RENDERING
+    return loading?<Loading/>:mainRender();
+    
 };
 
 export default EndPage;
