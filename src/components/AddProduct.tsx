@@ -2,7 +2,23 @@ import React from "react";
 import { useState } from "react";
 import AddComponent from "./AddComponent";
 
-const AddProduct = () => {
+interface props {
+    setProducts: React.Dispatch<
+        React.SetStateAction<
+            {
+                name: string;
+                price: string;
+                img_url: string;
+                pid: string;
+                desc: string;
+                admin: string;
+                mail: string;
+            }[]
+        >
+    >;
+}
+
+const AddProduct = ({setProducts}:props) => {
     const [newProd, setNewProd] = useState(Object);
 
     const setupVal = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
@@ -19,9 +35,7 @@ const AddProduct = () => {
     //         admin: "",
     //         mail: "",
 
-  
     // React.ChangeEvent<HTMLInputElement>
-    
 
     const [current, setCurrent] = useState(0);
 
@@ -38,6 +52,7 @@ const AddProduct = () => {
                     but="Next"
                     img="https://static.vecteezy.com/system/resources/previews/001/222/484/non_2x/e-commerce-online-shopping-concept-vector.jpg"
                     newProd={newProd}
+                    setProducts={setProducts}
                 />
             );
             break;
@@ -53,6 +68,7 @@ const AddProduct = () => {
                     but="Next"
                     img="https://th.bing.com/th/id/R.53805e41b5d80114dbb66ca20b348806?rik=79P8ZhWrl%2fts9A&pid=ImgRaw&r=0"
                     newProd={newProd}
+                    setProducts={setProducts}
                 />
             );
             break;
@@ -68,6 +84,7 @@ const AddProduct = () => {
                     but="Next"
                     img="https://static.vecteezy.com/system/resources/previews/001/829/844/non_2x/saving-into-a-piggy-bank-depicts-people-putting-money-into-banking-to-copy-save-and-bank-interest-for-return-on-investment-roi-character-concept-illustration-for-web-landing-page-mobile-apps-free-vector.jpg"
                     newProd={newProd}
+                    setProducts={setProducts}
                 />
             );
             break;
@@ -83,6 +100,7 @@ const AddProduct = () => {
                     but="Next"
                     img="https://static.vecteezy.com/system/resources/previews/001/829/844/non_2x/saving-into-a-piggy-bank-depicts-people-putting-money-into-banking-to-copy-save-and-bank-interest-for-return-on-investment-roi-character-concept-illustration-for-web-landing-page-mobile-apps-free-vector.jpg"
                     newProd={newProd}
+                    setProducts={setProducts}
                 />
             );
             break;
@@ -98,6 +116,7 @@ const AddProduct = () => {
                     but="Next"
                     img="https://static.vecteezy.com/system/resources/previews/022/076/802/non_2x/smiling-woman-send-messages-online-on-cellphone-happy-female-user-chat-on-internet-on-smartphone-virtual-communication-on-gadget-illustration-vector.jpg"
                     newProd={newProd}
+                    setProducts={setProducts}
                 />
             );
             break;
@@ -114,6 +133,7 @@ const AddProduct = () => {
                     but="Publish Pool"
                     img="https://static.vecteezy.com/system/resources/previews/022/076/802/non_2x/smiling-woman-send-messages-online-on-cellphone-happy-female-user-chat-on-internet-on-smartphone-virtual-communication-on-gadget-illustration-vector.jpg"
                     newProd={newProd}
+                    setProducts={setProducts}
                 />
             );
             break;

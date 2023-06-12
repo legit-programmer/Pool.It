@@ -11,7 +11,20 @@ interface props {
     but: string;
     img: string;
     current: number;
-    newProd:Object;
+    newProd: Object;
+    setProducts: React.Dispatch<
+        React.SetStateAction<
+            {
+                name: string;
+                price: string;
+                img_url: string;
+                pid: string;
+                desc: string;
+                admin: string;
+                mail: string;
+            }[]
+        >
+    >;
 }
 const AddComponent = ({
     setupVal,
@@ -22,10 +35,22 @@ const AddComponent = ({
     but,
     img,
     current,
-    newProd
+    newProd,
+    setProducts,
 }: props) => {
-
     const navigate = useNavigate();
+
+    const retrieveAll = () => {
+        axios
+            .get("https://notlegit991.pythonanywhere.com/get/") // FIX THIS REQUEST THING!!!!!!
+            .then((res) => {
+                setProducts(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
     return (
         <div className="container ">
             <div className="data my-16 d-flex rounded-md w-[100%] h-[100%] d-flex ">
@@ -54,18 +79,18 @@ const AddComponent = ({
                                         )
                                         .then((data) => {
                                             console.log(data);
-                                            navigate(`/product/${data.data.id}`);
+                                            retrieveAll();
+                                            navigate(
+                                                `/product/${data.data.id}`
+                                            );
                                         })
                                         .catch((err) => console.log(err));
-                                        
-                                }
-                                else{
+                                } else {
                                     setCurrent(current + 1);
                                 }
                             }}
                             className="btn btn-outline-success w-[25%] justify-center d-flex"
                         >
-                      
                             {but}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

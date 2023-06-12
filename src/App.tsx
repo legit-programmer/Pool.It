@@ -92,7 +92,7 @@ function App() {
                         path={"/product/:id"} //// do this!!!
                         element={<EndPage products={products} setProducts={setProducts}/>}
                     />
-                    <Route path={"/add"} element={<AddProduct />} />
+                    <Route path={"/add"} element={<AddProduct setProducts={setProducts}/>} />
                     <Route path={"/load"} Component={Loading} />
                     <Route
                         path={"/prompt"}
