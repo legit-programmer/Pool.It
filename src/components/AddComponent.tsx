@@ -71,7 +71,7 @@ const AddComponent = ({
                     <div className="but flex justify-end w-[75%]">
                         <button
                             onClick={() => {
-                                setEmpty(true);
+                                setEmpty(true)
                                 if (current === 5) {
                                     console.log(newProd);
                                     axios
