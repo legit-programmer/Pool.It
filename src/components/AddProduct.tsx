@@ -63,7 +63,7 @@ const AddProduct = ({setProducts}:props) => {
                     setupVal={setupVal}
                     setCurrent={setCurrent}
                     hero="Add product's image URL"
-                    sub="we currently dont support file uploads, you can host yout image for free ong imagur."
+                    sub="we currently dont support file uploads, you can host your image for free grab the link and paste it here."
                     type="img_url"
                     but="Next"
                     img="https://th.bing.com/th/id/R.53805e41b5d80114dbb66ca20b348806?rik=79P8ZhWrl%2fts9A&pid=ImgRaw&r=0"

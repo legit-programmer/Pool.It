@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -39,7 +39,7 @@ const AddComponent = ({
     setProducts,
 }: props) => {
     const navigate = useNavigate();
-
+    const [empty, setEmpty] = useState(true);
     const retrieveAll = () => {
         axios
             .get("https://notlegit991.pythonanywhere.com/get/") // FIX THIS REQUEST THING!!!!!!
@@ -64,12 +64,14 @@ const AddComponent = ({
                         name="name"
                         onChange={(e) => {
                             setupVal(e, `${type}`);
+                            setEmpty(false);
                         }}
                         onFocus={(e) => (e.target.value = "")}
                     />
                     <div className="but flex justify-end w-[75%]">
                         <button
                             onClick={() => {
+                                setEmpty(true);
                                 if (current === 5) {
                                     console.log(newProd);
                                     axios
@@ -89,8 +91,8 @@ const AddComponent = ({
                                     setCurrent(current + 1);
                                 }
                             }}
-                            className="btn btn-outline-success w-[25%] justify-center d-flex"
-                        >
+                            className="btn btn-outline-success w-[25%] justify-center d-flex" 
+                        disabled={empty}> 
                             {but}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
