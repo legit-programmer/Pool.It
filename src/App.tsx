@@ -10,6 +10,7 @@ import AddProduct from "./components/AddProduct";
 import Loading from "./components/Loading";
 import Prompt from "./components/Prompt";
 import { useLocation } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
     
@@ -55,7 +56,7 @@ function App() {
     return (
         <>
             <div className="container">
-                {/* <Router> */}
+                
                 <Navbar setSearch={setSearch} count={count} />
                 <Routes>
                     <Route path="/" Component={Home} />
@@ -104,14 +105,11 @@ function App() {
                         }
                     />
                 </Routes>
-                {/* </Router> */}
+                
 
-                {/* <Cart
-                    cartItems={cartItems}
-                    setCartItems={setCartItems}
-                    products={products}
-                /> */}
+                
             </div>
+            <Footer/>
         </>
 
         // <Home/>

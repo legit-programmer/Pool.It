@@ -30,7 +30,10 @@ const Home = () => {
                                         Just grab your link and share!
                                     </span>
                                 </p>
-                                <a className=" mx-14 w-28 text-center drop-shadow-2xl" href="/add">
+                                <a
+                                    className=" mx-14 w-28 text-center drop-shadow-2xl"
+                                    href="/add"
+                                >
                                     <button className=" d-flex justify-center items-center w-full h-full btn btn-outline-success drop-shadow-2xl">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +53,6 @@ const Home = () => {
                                 </a>
                             </div>
                         </div>
-                        {/* <div className="right w-[50%]"><img className=" rounded-3xl w-full" src="https://img.freepik.com/free-vector/add-cart-concept-illustration_114360-1435.jpg?w=360&t=st=1685277641~exp=1685278241~hmac=152117ce6ec312fb83b64ca17bbccc7495797f7a3fbfe74113b330c919c18184" alt="" /></div> */}
                     </div>
                 </div>
             </div>
