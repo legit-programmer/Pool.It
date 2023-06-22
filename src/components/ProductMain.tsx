@@ -1,4 +1,3 @@
-import React from "react";
 import Product from "./Product";
 import { Dispatch } from "react";
 import { SetStateAction } from "react";
@@ -6,8 +5,8 @@ import { SetStateAction } from "react";
 interface props {
     products: { name: string, price: string, img_url: string, pid: string}[];
     search: string;
-    cartItems: Array<string>;
-    setCartItems: React.Dispatch<React.SetStateAction<Array<string>>>;
+    cartItems: any;
+    setCartItems: any;
     setCount: Dispatch<SetStateAction<number>>;
     count: number;
 }

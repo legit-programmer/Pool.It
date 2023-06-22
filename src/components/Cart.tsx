@@ -3,8 +3,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 interface props {
-    cartItems: Array<string>;
-    setCartItems: React.Dispatch<React.SetStateAction<Array<string>>>;
+    cartItems: any;
+    setCartItems: any;
     products: { name: string; price: string; img_url: string; pid: string }[];
     count: number;
     setCount: React.Dispatch<React.SetStateAction<number>>;
@@ -20,7 +20,7 @@ const Cart = ({
 }: props) => {
     const check = (id: string) => {
         let count = 0;
-        cartItems.forEach((v) => v === id && count++);
+        cartItems.forEach((v:string) => v === id && count++);
         return count;
     };
 
@@ -51,7 +51,7 @@ const Cart = ({
                                     <div className="d-flex items-center justify-center absolute left-[80%]">
                                         <button
                                             onClick={() => {
-                                                let tempCart = cartItems;
+                                                let tempCart = [...cartItems];
                                                 tempCart.splice(
                                                     tempCart.indexOf(
                                                         product.pid
@@ -71,7 +71,7 @@ const Cart = ({
                                         <button
                                             className="btn btn-outline-success"
                                             onClick={() => {
-                                                let tempCart = cartItems;
+                                                let tempCart = [...cartItems];
                                                 tempCart.push(product.pid);
                                                 setCartItems(tempCart);
                                                 setCount(count + 1);

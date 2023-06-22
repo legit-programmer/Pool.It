@@ -28,7 +28,7 @@ const Product = ({
 
     const handleCLick = () => {
         // setCartItems(cartItems.push(pid));
-        let tempCart = cartItems;
+        let tempCart = [...cartItems];
         tempCart.push(pid);
         setCartItems(tempCart);
         setCount(count + 1);
@@ -45,7 +45,7 @@ const Product = ({
                     onClick={() => {
                         setPcount(pCount - 1);
                         setCount(count - 1);
-                        let tempCart = cartItems;
+                        let tempCart = [...cartItems];
                         tempCart.splice(tempCart.indexOf(pid), 1);
                         setCartItems(tempCart);
                     }}
@@ -57,7 +57,7 @@ const Product = ({
                     onClick={() => {
                         setPcount(pCount + 1);
                         setCount(count + 1);
-                        let tempCart = cartItems;
+                        let tempCart = [...cartItems];
                         tempCart.push(pid);
                         setCartItems(tempCart);
                     }}

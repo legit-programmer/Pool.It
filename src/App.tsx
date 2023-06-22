@@ -17,7 +17,6 @@ function App() {
 
     // console.log(products);
     const location = useLocation();
-    const [count, setCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
     const [products, setProducts] = useState([
@@ -32,7 +31,8 @@ function App() {
         },
     ]);
 
-    const [cartItems, setCartItems] = useState(Array<string>);
+    const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem('cartItems')||'[]'));
+    const [count, setCount] = useState(cartItems.length);
     useEffect(() => {
         
         if (location.pathname === "/pool") {
@@ -51,6 +51,13 @@ function App() {
                 });
         }
     },[location.pathname]);
+
+    useEffect(()=>{
+        localStorage.setItem('cartItems', JSON.stringify(cartItems))
+        setCount(cartItems.length)
+        console.log('cartitems updated')
+        
+    }, [cartItems])
 
 
     return (
