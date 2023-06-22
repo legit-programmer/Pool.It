@@ -24,7 +24,18 @@ const Product = ({
     setCartItems,
     cartItems,
 }: props) => {
-    const [pCount, setPcount] = useState(0);
+
+    const getCurrentProductCount = ()=>{
+        let count = 0;
+        cartItems.map((id)=>{
+            if(id===pid){
+                count+=1;
+            }
+        })
+        return count;
+    }
+
+    const [pCount, setPcount] = useState(getCurrentProductCount());
 
     const handleCLick = () => {
         // setCartItems(cartItems.push(pid));
