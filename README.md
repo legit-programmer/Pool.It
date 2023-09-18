@@ -2,7 +2,7 @@
 ![Logo](https://i.ibb.co/c87rDXZ/Screenshot-2023-05-15-00-36-26-335-com-android-chrome.png)
 
 
-# [Pool.It](https://poolitt.netlify.app)
+# [Pool.It](https://poolit.legittt.me)
 
 An online store which can be used to list or purchase custom products, all the users dive in together to showcase and pool their product at one site. No registration, No Credentials required to list your own product, just grab the link to share it with others.
 
